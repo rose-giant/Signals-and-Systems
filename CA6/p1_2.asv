@@ -48,14 +48,14 @@ for i = 1 : length(noisePower)
     foundTd = phase(maxIndex) / (2 * pi * (fd + fc));
     foundV = foundFd / beta;
     foundR = foundTd * lightSpeed / 2;
-    if (abs(foundV - speed) < threshold * speed)
+    if (abs(foundV - speed) < threshold * v)
         bestVNoisePower = thisNoisePower;
     end
-    if (abs(foundR - radius) < threshold * radius)
+    if (abs(foundR - R) < threshold * R)
         bestRNoisePower = thisNoisePower;
     end
-    speedFault(i) = abs(foundV - speed) * 3.6;
-    radiusFault(i) = abs(foundR - radius) / 1000;
+    speedFault(i) = abs(foundV - v) * 3.6;
+    radiusFault(i) = abs(foundR - R) / 1000;
 end
 
 fprintf("last noise standard derivation for v is: %f\n", bestVNoisePower);
